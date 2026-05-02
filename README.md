@@ -1,0 +1,1 @@
+# Thermodynamic-and-Solidification-Simulation-of-a-Mn-Alloy-using-PyCalphad-and-OpenFOAM
