@@ -21,14 +21,14 @@ do processo de solidificação.
 Com os dados térmicos, utilizou-se o OpenFOAM para modelar o resfriamento da liga em um molde.
 * **Solver:** 'chtMultiRegionFoam'
 * **Modelagem de solidificação:** 'fvOptions' com 'solidificationSource'
-**Condições Iniciais e de Contorno:**
+* **Condições Iniciais e de Contorno:**
 * **Temperatura Inicial do Metal Líquido (T0):** 1800 K.
 * **Domínio:** Representação do molde e da liga metálica (pastas 'constant' e 'system').
 * **Física Envolvida:** Transferência de calor por condução e convecção, considerando a liberação de calor latente durante a mudança de fase.
 
 # Como executar
-Na interface Python (3.10.20) rode 'Setup_wks.py' na mesma pasta que contenha o banco de dados 'mc_fe_v2062.tdb'.
-O output gerará dados de $H(T)$, $T_{liquidus}$ e $T_{solidus}$ e Cp médio da fase líquida. Nota: Os valores molares ($/mol$) devem ser convertidos para base mássica ($/kg$) antes da inserção no OpenFOAM.
-Usando o OpenFOAM (v2412), maior parte dos dados gerados pela termodinâmica serão usados em constant/liqmetal/thermophysicalProperties ou em system/liqmetal/fvOptions.
-Comandos de processo: blockMesh -> checkMesh -> setFields -> chtMultiRegionFoam
-A integração final dos resultados podem ser visualizados no ParaView
+* Na interface Python (3.10.20) rode 'Setup_wks.py' na mesma pasta que contenha o banco de dados 'mc_fe_v2062.tdb'.
+* O output gerará dados de $H(T)$, $T_{liquidus}$ e $T_{solidus}$ e Cp médio da fase líquida. Nota: Os valores molares ($/mol$) devem ser convertidos para base mássica ($/kg$) antes da inserção no OpenFOAM.
+* Usando o OpenFOAM (v2412), maior parte dos dados gerados pela termodinâmica serão usados em constant/liqmetal/thermophysicalProperties ou em system/liqmetal/fvOptions.
+* Comandos de processo: blockMesh -> checkMesh -> setFields -> chtMultiRegionFoam
+* A integração final dos resultados podem ser visualizados no ParaView
