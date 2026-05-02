@@ -1,0 +1,55 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+thermoType
+{
+    type heSolidThermo;
+    mixture pureMixture;
+    transport constIso;
+    thermo hConst;
+    equationOfState rhoConst;
+    specie specie;
+    energy sensibleEnthalpy;
+}
+//MOLDE ACO FERRAMENTA  rho= 7800 kg/m3               Cp = 450 entre 600 J/kg.K      k = 20 entre 50 W/m.K
+//MOLDE AREIA           rho= 1500 entre 2000 kg/m3    Cp = 800 entre 1000 J/kg.K     k = 0.5 entre 1.5 W/m.K
+//MOLDE CERAMICO        rho= 2500 entre 4000 kg/m3    Cp = 700 entre 1200 J/kg.K     k = 0.5 entre 2 W/m.K
+
+mixture
+{
+    specie
+    {
+        molWeight       0.055;
+    }
+    thermodynamics
+    {
+        Cp              500;         //CALOR ESPECIFICO
+        Hf              0;
+    }
+
+    transport
+    {
+        kappa            40;       //CONDUTIVIDADE TERMICA
+    }
+
+    equationOfState
+    {
+        rho              7800;       //DENSIDADE
+    }
+}
+
+
+// ************************************************************************* //

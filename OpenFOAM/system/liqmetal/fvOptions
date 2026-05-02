@@ -1,0 +1,39 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solidification
+{
+    type            solidificationMeltingSource;
+    active          true;
+
+    solidificationMeltingSourceCoeffs
+    {
+        selectionMode   cellZone;
+        cellZone        liqmetal;
+        Tmelt          1749;        //TEMPERATURA SOLIDIFICACAO - NO CASO FOI FEITO A MEDIA ENTRE T_LIQ E T_SOL
+
+        L              296835;       //CALOR LATENTE
+        thermoMode      thermo;
+        beta           1e-5;        //COEF EXPANSAO TERMICA 1/K
+        rhoRef         7880;        //DENSIDADE METAL SOLIDO
+     
+        relax          0.1;           //RELAXACAO ITE
+        Cu             1e6;             //MUSHY COEF
+        q              1e-3;           //ZONA MUSHY
+    }
+}
+
+// ************************************************************************* //

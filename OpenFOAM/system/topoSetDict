@@ -1,0 +1,61 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    //METAL
+    {
+        name    liqmetalCellSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        box     (0.005 0.005 0.005) (0.045 0.065 0.105);
+    }
+
+    {
+        name    liqmetal;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        set     liqmetalCellSet;
+    }
+
+    //MOLDE
+    {
+        name    moldeCellSet;
+        type    cellSet;
+        action  new;
+        source  cellToCell;
+        set     liqmetalCellSet;
+    }
+    //COPIA O CELL DO LIQUIDO E O INVERTE, RESULTANDO MEIO QUE NO RESTANTE NO DOMINIO
+    {
+        name    moldeCellSet;
+        type    cellSet;
+        action  invert;
+    }
+    
+    {
+        name    molde;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        set     moldeCellSet;
+    }
+);
+
+
+// ************************************************************************* //

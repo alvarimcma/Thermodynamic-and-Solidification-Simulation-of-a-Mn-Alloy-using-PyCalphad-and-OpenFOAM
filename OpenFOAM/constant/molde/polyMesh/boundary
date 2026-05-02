@@ -1,0 +1,75 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    arch        "LSB;label=32;scalar=64";
+    class       polyBoundaryMesh;
+    location    "constant/molde/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+7
+(
+    leftWall
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          12600;
+        startFace       1424400;
+    }
+    rightWall
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          12600;
+        startFace       1437000;
+    }
+    topWall
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          9000;
+        startFace       1449600;
+    }
+    botWall
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          9000;
+        startFace       1458600;
+    }
+    upWall
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          4400;
+        startFace       1467600;
+    }
+    lowWall
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          14000;
+        startFace       1472000;
+    }
+    molde_to_liqmetal
+    {
+        type            mappedWall;
+        inGroups        1(wall);
+        nFaces          41600;
+        startFace       1486000;
+        sampleMode      nearestPatchFace;
+        sampleRegion    liqmetal;
+        samplePatch     liqmetal_to_molde;
+    }
+)
+
+// ************************************************************************* //
